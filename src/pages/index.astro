@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+
+const sorted = [...projects].sort((a, b) => b.date.localeCompare(a.date));
+---
+<Base title="KSY — Creative Developer">
+  <div class="container">
+    <header class="hero">
+      <h1>물리와 데이터로<br />세계를 시뮬레이션합니다</h1>
+      <p class="tagline">
+        안녕하세요, <strong>KSY</strong>입니다. 복잡한 물리 법칙과 실시간 데이터를
+        브라우저 안의 인터랙티브한 3D 세계로 옮기는 작업을 좋아합니다.
+      </p>
+      <div class="links">
+        <a class="btn primary" href="#projects">프로젝트 보기</a>
+        <a class="btn" href="https://github.com/torysaewoo" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </header>
+
+    <section id="projects">
+      <h2 class="section-title">프로젝트</h2>
+      <div class="grid">
+        {sorted.map((p) => <ProjectCard project={p} />)}
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="about-box">
+        <p>
+          시뮬레이션, 절차적 생성, 데이터 시각화처럼 <strong>"움직이는 시스템"</strong>을
+          만드는 데 관심이 많습니다. 아이디어를 빠르게 실제로 돌아가는 물건으로 만들고,
+          브라우저에서 누구나 바로 만져볼 수 있게 배포하는 것을 원칙으로 합니다.
+        </p>
+        <div class="stack">
+          {['TypeScript', 'Three.js', 'Python', 'Node.js', 'Astro', 'Git'].map((t) => (
+            <span class="badge">{t}</span>
+          ))}
+        </div>
+        <p style="margin-top: 8px;">
+          📮 <a href="mailto:fourweez@gmail.com">fourweez@gmail.com</a>
+          &nbsp;·&nbsp;
+          <a href="https://github.com/torysaewoo" target="_blank" rel="noopener">github.com/torysaewoo</a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    © 2026 KSY · Built with Astro · Deployed on GitHub Pages
+  </footer>
+</Base>
