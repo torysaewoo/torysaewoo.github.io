@@ -17,34 +17,85 @@ const { title, description = 'KSY — 인터랙티브 시뮬레이션과 웹 실
     <canvas class="stars" id="stars"></canvas>
     <slot />
     <script>
-      // 가벼운 캔버스 스타필드: 마우스에 은은하게 반응하는 별들
+      // 캔버스 스타필드: 3단계 별(잔별/일반/밝은 별+글로우) + 반짝임 + 가끔 별똥별
       const canvas = document.getElementById('stars') as HTMLCanvasElement;
       const ctx = canvas.getContext('2d')!;
-      let stars: { x: number; y: number; r: number; tw: number }[] = [];
+      interface Star { x: number; y: number; r: number; tw: number; hue: string; bright: boolean }
+      let stars: Star[] = [];
+      const HUES = ['#e8ecff', '#cdd6ff', '#ffe9d6', '#d6f0ff'];
 
       function resize() {
         canvas.width = innerWidth;
         canvas.height = innerHeight;
-        const count = Math.floor((innerWidth * innerHeight) / 6000);
-        stars = Array.from({ length: count }, () => ({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 1.3 + 0.2,
-          tw: Math.random() * Math.PI * 2,
-        }));
+        const count = Math.floor((innerWidth * innerHeight) / 2200);
+        stars = Array.from({ length: count }, () => {
+          const bright = Math.random() < 0.06;
+          return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: bright ? 1.2 + Math.random() * 1.4 : 0.3 + Math.random() * 0.9,
+            tw: Math.random() * Math.PI * 2,
+            hue: HUES[Math.floor(Math.random() * HUES.length)],
+            bright,
+          };
+        });
       }
       resize();
       addEventListener('resize', resize);
 
+      // 별똥별 상태
+      let meteor: { x: number; y: number; vx: number; vy: number; life: number } | null = null;
+      let nextMeteor = 4000 + Math.random() * 6000;
+
       function draw(t: number) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (const s of stars) {
-          const a = 0.35 + 0.35 * Math.sin(t / 1400 + s.tw);
-          ctx.globalAlpha = a;
-          ctx.fillStyle = '#cdd6ff';
+          const a = s.bright
+            ? 0.65 + 0.35 * Math.sin(t / 900 + s.tw)
+            : 0.3 + 0.4 * Math.sin(t / 1600 + s.tw);
+          ctx.globalAlpha = Math.max(0.05, a);
+          ctx.fillStyle = s.hue;
+          if (s.bright) {
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = s.hue;
+          }
           ctx.beginPath();
           ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
           ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+
+        // 별똥별: 몇 초에 한 번, 짧게 스치고 사라짐
+        nextMeteor -= 16;
+        if (!meteor && nextMeteor <= 0) {
+          const fromLeft = Math.random() < 0.5;
+          meteor = {
+            x: fromLeft ? -20 : Math.random() * canvas.width,
+            y: fromLeft ? Math.random() * canvas.height * 0.4 : -20,
+            vx: 7 + Math.random() * 5,
+            vy: 3 + Math.random() * 3,
+            life: 1,
+          };
+          nextMeteor = 6000 + Math.random() * 9000;
+        }
+        if (meteor) {
+          meteor.x += meteor.vx;
+          meteor.y += meteor.vy;
+          meteor.life -= 0.012;
+          const grad = ctx.createLinearGradient(
+            meteor.x, meteor.y,
+            meteor.x - meteor.vx * 12, meteor.y - meteor.vy * 12,
+          );
+          grad.addColorStop(0, `rgba(255,255,255,${Math.max(0, meteor.life)})`);
+          grad.addColorStop(1, 'rgba(255,255,255,0)');
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          ctx.moveTo(meteor.x, meteor.y);
+          ctx.lineTo(meteor.x - meteor.vx * 12, meteor.y - meteor.vy * 12);
+          ctx.stroke();
+          if (meteor.life <= 0 || meteor.x > canvas.width + 40 || meteor.y > canvas.height + 40) meteor = null;
         }
         requestAnimationFrame(draw);
       }
