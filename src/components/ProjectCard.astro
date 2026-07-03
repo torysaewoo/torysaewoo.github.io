@@ -1,9 +1,10 @@
 ---
 import type { Project } from '../data/projects';
-interface Props { project: Project }
-const { project } = Astro.props;
+interface Props { project: Project; index?: number }
+const { project, index } = Astro.props;
 ---
 <article class="card">
+  {index && <span class="index">{String(index).padStart(2, '0')}</span>}
   <a class="thumb" href={project.live ?? project.repo} target="_blank" rel="noopener">
     <img src={`/thumbs/${project.thumbnail}`} alt={`${project.title} 스크린샷`} loading="lazy" />
   </a>
@@ -14,8 +15,12 @@ const { project } = Astro.props;
       {project.tech.map((t) => <span class="badge">{t}</span>)}
     </div>
     <div class="actions">
-      {project.live && <a class="btn primary" href={project.live} target="_blank" rel="noopener">라이브 데모</a>}
-      {project.repo && <a class="btn" href={project.repo} target="_blank" rel="noopener">GitHub</a>}
+      {project.live && (
+        <a class="btn primary" href={project.live} target="_blank" rel="noopener">
+          Live <span class="arrow">↗</span>
+        </a>
+      )}
+      {project.repo && <a class="btn" href={project.repo} target="_blank" rel="noopener">Code</a>}
     </div>
   </div>
 </article>

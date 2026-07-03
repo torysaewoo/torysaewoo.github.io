@@ -4,29 +4,51 @@ import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
 
 const sorted = [...projects].sort((a, b) => b.date.localeCompare(a.date));
+const tickerItems = [
+  'PHYSICS SIMULATION', 'REALTIME DATA', 'WEBGL', 'PROCEDURAL WORLDS',
+  'THREE.JS', 'SHALLOW WATER', 'OPEN DATA', 'ZERO INSTALL',
+];
 ---
 <Base title="KSY — Creative Developer">
   <div class="container">
     <header class="hero">
-      <h1>Less friction.<br />Deeper immersion.</h1>
+      <span class="eyebrow">simulation &amp; data — seoul, earth</span>
+      <h1>Less friction.<br /><span class="grad">Deeper immersion.</span></h1>
       <p class="tagline">
-        Interactive physics in your browser. Gravity included, patience not required.
+        Interactive physics in your browser. Gravity included, patience not required.<span class="cursor"></span>
       </p>
       <div class="links">
         <a class="btn primary" href="#projects">Explore Projects</a>
         <a class="btn" href="https://github.com/torysaewoo" target="_blank" rel="noopener">GitHub</a>
       </div>
+      <span class="scroll-hint">SCROLL ↓</span>
     </header>
+  </div>
 
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      {[...tickerItems, ...tickerItems].map((item) => (
+        <><span>{item}</span><span class="dot">✦</span></>
+      ))}
+    </div>
+  </div>
+
+  <div class="container">
     <section id="projects">
-      <h2 class="section-title">프로젝트</h2>
+      <div class="section-head">
+        <span class="num">01</span>
+        <h2>Projects</h2>
+      </div>
       <div class="grid">
-        {sorted.map((p) => <ProjectCard project={p} />)}
+        {sorted.map((p, i) => <ProjectCard project={p} index={i + 1} />)}
       </div>
     </section>
 
     <section id="about">
-      <h2 class="section-title">About</h2>
+      <div class="section-head">
+        <span class="num">02</span>
+        <h2>About</h2>
+      </div>
       <div class="about-box">
         <p>
           시뮬레이션, 절차적 생성, 데이터 시각화처럼 <strong>"움직이는 시스템"</strong>을
@@ -48,6 +70,6 @@ const sorted = [...projects].sort((a, b) => b.date.localeCompare(a.date));
   </div>
 
   <footer>
-    © 2026 KSY · Built with Astro · Deployed on GitHub Pages
+    © 2026 · BUILT WITH ASTRO · DEPLOYED ON GITHUB PAGES
   </footer>
 </Base>
