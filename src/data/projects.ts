@@ -20,6 +20,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'HTML의 불합리한 효과 — 한글판',
+    summary:
+      'AI 에이전트의 답변이 왜 마크다운이 아니라 HTML이어야 할까? Anthropic의 "The Unreasonable Effectiveness of HTML" 데모 사이트(Apache-2.0)를 한글로 옮긴 학습판. 슬라이드 데크, 칸반 보드, consistent hashing 시뮬레이션 등 자기완결형 HTML 데모 20종을 그대로 체험할 수 있다.',
+    useFor: 'AI로 문서·리포트·프로토타입을 만들 때 마크다운 대신 HTML을 쓰는 20가지 패턴 참고서',
+    category: '실험',
+    tech: ['HTML', 'CSS', 'Vanilla JS', 'SVG', 'Cloudflare Pages'],
+    live: 'https://html-effectiveness-kr.pages.dev/',
+    thumbnail: 'html-effectiveness-kr.png',
+    date: '2026-07',
+    featured: true,
+  },
+  {
     title: 'RichRichRich — 고위공직자 재산·부동산 분석',
     summary:
       '뉴스에 나온 그 의원, 부동산을 진짜 얼마나 갖고 있을까? 10년치 재산공개 6.3만 건(2016–2025)에서 인물 검색 한 번으로 재산 랭킹과 10년 추이, 매매 시그널, 카카오맵 지역 분석까지 확인할 수 있는 대시보드.',
