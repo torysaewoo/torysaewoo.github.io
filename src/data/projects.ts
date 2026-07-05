@@ -17,8 +17,7 @@ export const projects: Project[] = [
     summary:
       '국회 고위공직자 재산공개 10년치(2016–2025, 6.3만 건)를 부동산 관점으로 추적하는 대시보드. 누가 언제 어디의 부동산을 사고팔았는지 — 재산 랭킹, 인물별 10년 추이, 매매 시그널 피드, 지역 분석에 카카오맵 연동까지.',
     tech: ['Vanilla JS', 'SVG Charts', 'Python', 'Kakao Maps', 'GitHub Pages'],
-    live: 'https://torysaewoo.github.io/richrichrich/',
-    repo: 'https://github.com/torysaewoo/richrichrich',
+    live: 'https://richrichrich.pages.dev/',
     thumbnail: 'richrichrich.png',
     date: '2026-07',
     featured: true,
