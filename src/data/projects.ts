@@ -20,6 +20,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: '두이노 비가 — 릴케 시를 떠다니며 읽는 명상 게임',
+    summary:
+      '시집을 끝까지 읽는 게 왜 이렇게 어려울까? 릴케의 『두이노 비가』 10편을 챕터로 옮겨, 별과 파티클이 흐르는 밤하늘을 표류하며 시구를 하나씩 모아 읽는 브라우저 게임. 챕터마다 시의 정서를 반영한 절차적 배경 모티프와 앰비언트 드론 사운드가 함께 바뀐다. 키보드와 터치 모두 지원.',
+    useFor: '지친 하루 끝에 5분, 게임패드 대신 시 한 구절 — 소리 켜고 천천히 떠다니며 읽는 디지털 시집',
+    category: '실험',
+    tech: ['Canvas 2D', 'Web Audio API', 'Vanilla JS', 'Cloudflare Pages'],
+    live: 'https://duino-elegies.pages.dev/',
+    thumbnail: 'duino-elegies.png',
+    date: '2026-07',
+    featured: true,
+  },
+  {
     title: 'HTML의 불합리한 효과 — 한글판',
     summary:
       'AI 에이전트의 답변이 왜 마크다운이 아니라 HTML이어야 할까? Anthropic의 "The Unreasonable Effectiveness of HTML" 데모 사이트(Apache-2.0)를 한글로 옮긴 학습판. 슬라이드 데크, 칸반 보드, consistent hashing 시뮬레이션 등 자기완결형 HTML 데모 20종을 그대로 체험할 수 있다.',
