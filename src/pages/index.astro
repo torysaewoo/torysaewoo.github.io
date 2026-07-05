@@ -4,22 +4,22 @@ import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
 
 const sorted = [...projects].sort((a, b) => b.date.localeCompare(a.date));
+const categories = [...new Set(sorted.map((p) => p.category))];
 const tickerItems = [
-  'PHYSICS SIMULATION', 'REALTIME DATA', 'WEBGL', 'PROCEDURAL WORLDS',
-  'THREE.JS', 'SHALLOW WATER', 'OPEN DATA', 'ZERO INSTALL',
+  'TYPESCRIPT', 'JAVASCRIPT', 'PYTHON', 'THREE.JS', 'WEBGL',
+  'NODE.JS', 'ASTRO', 'VITE', 'SVG CHARTS', 'KAKAO MAPS API',
+  'REST API', 'CLOUDFLARE PAGES', 'GIT',
 ];
 ---
-<Base title="KSY — Creative Developer">
+<Base title="KSY — Tools from Everyday Questions">
   <div class="container">
     <header class="hero">
-      <span class="eyebrow">시뮬레이션 &amp; 데이터 — 서울, 지구</span>
-      <h1>마찰은 줄이고,<br /><span class="grad">몰입은 깊게.</span></h1>
+      <h1>일상의 질문을<br /><span class="grad">도구로.</span></h1>
       <p class="tagline">
-        브라우저에서 바로 돌아가는 인터랙티브 물리. 중력 포함, 인내심 불필요.<span class="cursor"></span>
+        데이터로 답하고, 시뮬레이션으로 보여주고, 브라우저로 배포합니다.<span class="cursor"></span>
       </p>
       <div class="links">
         <a class="btn primary" href="#projects">Explore Projects</a>
-        <a class="btn" href="https://github.com/torysaewoo" target="_blank" rel="noopener">GitHub</a>
       </div>
       <span class="scroll-hint">SCROLL ↓</span>
     </header>
@@ -39,6 +39,12 @@ const tickerItems = [
         <span class="num">01</span>
         <h2>Projects</h2>
       </div>
+      <div class="filter-bar" role="group" aria-label="프로젝트 카테고리 필터">
+        <button class="filter-btn active" data-filter="all">전체</button>
+        {categories.map((c) => (
+          <button class="filter-btn" data-filter={c}>{c}</button>
+        ))}
+      </div>
       <div class="grid">
         {sorted.map((p, i) => <ProjectCard project={p} index={i + 1} />)}
       </div>
@@ -51,25 +57,38 @@ const tickerItems = [
       </div>
       <div class="about-box">
         <p>
-          시뮬레이션, 절차적 생성, 데이터 시각화처럼 <strong>"움직이는 시스템"</strong>을
-          만드는 데 관심이 많습니다. 아이디어를 빠르게 실제로 돌아가는 물건으로 만들고,
-          브라우저에서 누구나 바로 만져볼 수 있게 배포하는 것을 원칙으로 합니다.
+          거창한 비전보다, <strong>당장 필요한 것</strong>을 만듭니다.
+          뉴스 보다 궁금해진 데이터, 일상에서 반복되는 불편, 그냥 돌려보고 싶은 시뮬레이션 —
+          아이디어가 생기면 며칠 안에 돌아가는 물건으로 만들고, 누구나 링크 하나로
+          써볼 수 있게 브라우저에 배포합니다. 여기 있는 건 전부 제가 먼저 쓰고 있는 것들입니다.
         </p>
         <div class="stack">
           {['TypeScript', 'Three.js', 'Python', 'Node.js', 'Astro', 'Git'].map((t) => (
             <span class="badge">{t}</span>
           ))}
         </div>
-        <p style="margin-top: 8px;">
-          📮 <a href="mailto:fourweez@gmail.com">fourweez@gmail.com</a>
-          &nbsp;·&nbsp;
-          <a href="https://github.com/torysaewoo" target="_blank" rel="noopener">github.com/torysaewoo</a>
-        </p>
       </div>
     </section>
   </div>
 
   <footer>
-    © 2026 · BUILT WITH ASTRO · DEPLOYED ON GITHUB PAGES
+    © 2026 KSY
   </footer>
+
+  <script>
+    // 카테고리 필터: 버튼 클릭 시 data-category가 일치하는 카드만 표시
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const cards = document.querySelectorAll<HTMLElement>('.card[data-category]');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        cards.forEach((card) => {
+          card.style.display =
+            filter === 'all' || card.dataset.category === filter ? '' : 'none';
+        });
+      });
+    });
+  </script>
 </Base>

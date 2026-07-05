@@ -188,6 +188,36 @@ section { padding: 88px 0; }
   background: linear-gradient(90deg, var(--border), transparent);
 }
 
+/* ── 카테고리 필터 ─────────────────── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.filter-btn {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(15, 18, 38, 0.6);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+.filter-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+.filter-btn.active {
+  color: #05060f;
+  background: var(--lime);
+  border-color: var(--lime);
+  font-weight: 700;
+}
+
 /* ── 프로젝트 카드 (글래스) ─────────── */
 .grid {
   display: grid;
@@ -226,6 +256,22 @@ section { padding: 88px 0; }
   border: 1px solid var(--border);
 }
 
+.card .cat-label {
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  z-index: 2;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--lime);
+  background: rgba(5, 6, 15, 0.55);
+  backdrop-filter: blur(6px);
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(200, 255, 94, 0.25);
+}
+
 .card .thumb {
   display: block;
   aspect-ratio: 16 / 9;
@@ -249,6 +295,15 @@ section { padding: 88px 0; }
   letter-spacing: -0.01em;
 }
 .card p { color: var(--text-dim); font-size: 0.9rem; }
+.card .use-for {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-left: 2px solid var(--lime);
+  border-radius: 0 8px 8px 0;
+  background: rgba(200, 255, 94, 0.05);
+  color: var(--text);
+  font-size: 0.82rem;
+}
 
 .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
 .badge {

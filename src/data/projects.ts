@@ -1,7 +1,14 @@
 // 프로젝트 카드 데이터 — 새 프로젝트를 추가할 때 여기에 항목 하나만 추가하면 된다.
+// summary는 "어떤 질문/불편 → 뭘 할 수 있는가" 순서로 쓴다. useFor는 카드의 "💡 이럴 때" 한 줄.
+export type Category = '데이터·분석' | '시뮬레이션' | '생활 도구' | '실험';
+
 export interface Project {
   title: string;
+  /** 효용 우선: ① 어떤 질문/불편에서 출발 ② 이걸로 뭘 할 수 있는가 */
   summary: string;
+  /** "이럴 때 쓰세요" 한 줄 */
+  useFor: string;
+  category: Category;
   tech: string[];
   live?: string;
   repo?: string;
@@ -15,7 +22,9 @@ export const projects: Project[] = [
   {
     title: 'RichRichRich — 고위공직자 재산·부동산 분석',
     summary:
-      '국회 고위공직자 재산공개 10년치(2016–2025, 6.3만 건)를 부동산 관점으로 추적하는 대시보드. 누가 언제 어디의 부동산을 사고팔았는지 — 재산 랭킹, 인물별 10년 추이, 매매 시그널 피드, 지역 분석에 카카오맵 연동까지.',
+      '뉴스에 나온 그 의원, 부동산을 진짜 얼마나 갖고 있을까? 10년치 재산공개 6.3만 건(2016–2025)에서 인물 검색 한 번으로 재산 랭킹과 10년 추이, 매매 시그널, 카카오맵 지역 분석까지 확인할 수 있는 대시보드.',
+    useFor: '부동산 투자 인사이트 — 정보에 가장 밝은 고위공직자들이 언제, 어디를 사고파는지가 곧 시장 시그널',
+    category: '데이터·분석',
     tech: ['Vanilla JS', 'SVG Charts', 'Python', 'Kakao Maps', 'GitHub Pages'],
     live: 'https://richrichrich.pages.dev/',
     thumbnail: 'richrichrich.png',
@@ -25,7 +34,9 @@ export const projects: Project[] = [
   {
     title: 'Earth — 실시간 지구 시뮬레이션',
     summary:
-      '아이코스피어 정점 그래프 위에서 도는 shallow-water 유체 물리 시뮬레이션. 실제 지구 지형에 실시간 강수 레이더·지진·태양 위치를 연동해, 지금 비 오는 곳에 시뮬 속 강이 흐른다.',
+      '지금 지구 어디에 비가 오고, 그 물은 어디로 흐를까? 실시간 강수 레이더·지진·태양 위치 데이터를 shallow-water 물리 시뮬레이션 위에 얹어, 뉴스 속 기상 이벤트를 한 화면에서 직접 돌려보는 살아있는 지구본.',
+    useFor: '태풍·폭우 등 기상 이벤트를 한눈에 파악하고, 지진 발생을 실시간으로 모니터링',
+    category: '시뮬레이션',
     tech: ['Three.js', 'TypeScript', 'Vite', 'RainViewer API', 'USGS'],
     live: 'https://earth-sim-cn0.pages.dev/',
     thumbnail: 'earth-sim.png',

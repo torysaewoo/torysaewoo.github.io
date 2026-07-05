@@ -3,14 +3,16 @@ import type { Project } from '../data/projects';
 interface Props { project: Project; index?: number }
 const { project, index } = Astro.props;
 ---
-<article class="card">
+<article class="card" data-category={project.category}>
   {index && <span class="index">{String(index).padStart(2, '0')}</span>}
+  <span class="cat-label">{project.category}</span>
   <a class="thumb" href={project.live ?? project.repo} target="_blank" rel="noopener">
     <img src={`/thumbs/${project.thumbnail}`} alt={`${project.title} 스크린샷`} loading="lazy" />
   </a>
   <div class="body">
     <h3>{project.title}</h3>
     <p>{project.summary}</p>
+    <p class="use-for">💡 이럴 때: {project.useFor}</p>
     <div class="badges">
       {project.tech.map((t) => <span class="badge">{t}</span>)}
     </div>
