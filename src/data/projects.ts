@@ -28,8 +28,7 @@ export const projects: Project[] = [
     summary:
       '아이코스피어 정점 그래프 위에서 도는 shallow-water 유체 물리 시뮬레이션. 실제 지구 지형에 실시간 강수 레이더·지진·태양 위치를 연동해, 지금 비 오는 곳에 시뮬 속 강이 흐른다.',
     tech: ['Three.js', 'TypeScript', 'Vite', 'RainViewer API', 'USGS'],
-    live: 'https://torysaewoo.github.io/earth-sim/',
-    repo: 'https://github.com/torysaewoo/earth-sim',
+    live: 'https://earth-sim-cn0.pages.dev/',
     thumbnail: 'earth-sim.png',
     date: '2026-07',
     featured: true,
