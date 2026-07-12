@@ -20,6 +20,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: '반도체 3사 기술적 분석 — 매일 예측하는 차트 대시보드',
+    summary:
+      'SK하이닉스·삼성전자·마이크론 주가를 캔들차트·이동평균·볼린저·RSI·MACD·일목균형표 등 10개 기법으로 읽고, 외국인·기관·개인 수급까지 합산해 단기/중기/장기 방향을 게이지로 예측한다. 과거 250일 소급 검증한 예측 적중률과 기법별 백테스트로 신호의 신뢰도를 스스로 채점하고, 각 기법의 유래·판독법은 클릭 한 번에 팝업으로 열린다. 차트는 라이브러리 없이 캔버스로 직접 렌더링.',
+    useFor: '반도체주 매매 전에 기술적 신호들을 한 화면에서 점검하고 싶을 때 — 각 지표가 왜 그렇게 읽히는지 근거까지',
+    category: '데이터·분석',
+    tech: ['Vanilla JS Canvas', 'Python (yfinance)', '네이버증권 수급 API', '기술적 지표 백테스트', 'Cloudflare Pages'],
+    live: 'https://stock-chart-analysis.pages.dev/',
+    thumbnail: 'stock-chart-analysis.png',
+    date: '2026-07',
+    featured: true,
+  },
+  {
     title: 'Threads 아카이브 — @choi.openai AI 뉴스 자동 요약 대시보드',
     summary:
       '관심 있는 Threads 계정의 새 글을 매번 눌러보지 않고 한눈에 훑고 싶다는 불편에서 출발. 로그인 세션으로 프로필 글과 답글을 하루 2회 자동 수집하고, Claude Code(Sonnet)가 각 글을 GeekNews식 핵심 불릿으로 요약해 누적 대시보드로 쌓는다. 상단 날짜 칩으로 특정 날짜 글만 보기, 최신순·과거순 정렬, 본문·답글 검색을 지원한다.',
