@@ -20,6 +20,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'BLOCK /10 — 브라우저 클래식 테트리스',
+    summary:
+      '설치 없이 브라우저에서 바로 즐기는 10×20 클래식 테트리스. 홀드·하드 드롭·고스트 피스 같은 현대 테트리스 규칙을 갖췄고, 모바일에서는 터치 버튼과 보드 탭·스와이프로 조작할 수 있다. 게임 로직은 vitest 자동 테스트로 검증하며, 최고 점수는 로컬에 저장된다.',
+    useFor: '잠깐 머리 식히고 싶을 때 — 데스크톱이든 폰이든 링크 하나로 바로 한 판',
+    category: '실험',
+    tech: ['Vanilla JS', 'Vite', 'Vitest', 'tetris-engine', 'Cloudflare Pages'],
+    live: 'https://block10-tetris.pages.dev/',
+    thumbnail: 'block10-tetris.png',
+    date: '2026-07',
+    featured: true,
+  },
+  {
     title: '두이노 비가 — 릴케 시를 떠다니며 읽는 명상 게임',
     summary:
       '시집을 끝까지 읽는 게 왜 이렇게 어려울까? 릴케의 『두이노 비가』 10편을 챕터로 옮겨, 별과 파티클이 흐르는 밤하늘을 표류하며 시구를 하나씩 모아 읽는 브라우저 게임. 챕터마다 시의 정서를 반영한 절차적 배경 모티프와 앰비언트 드론 사운드가 함께 바뀐다. 키보드와 터치 모두 지원.',
