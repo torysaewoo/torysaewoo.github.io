@@ -20,6 +20,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'Threads 아카이브 — @choi.openai AI 뉴스 자동 요약 대시보드',
+    summary:
+      '관심 있는 Threads 계정의 새 글을 매번 눌러보지 않고 한눈에 훑고 싶다는 불편에서 출발. 로그인 세션으로 프로필 글과 답글을 하루 2회 자동 수집하고, Claude Code(Sonnet)가 각 글을 GeekNews식 핵심 불릿으로 요약해 누적 대시보드로 쌓는다. 상단 날짜 칩으로 특정 날짜 글만 보기, 최신순·과거순 정렬, 본문·답글 검색을 지원한다.',
+    useFor: '특정 인물의 AI 소식을 놓치지 않고 싶을 때 — 요약 불릿만 훑고 필요한 것만 원문으로',
+    category: '생활 도구',
+    tech: ['Python', 'Playwright', 'Claude Code (Sonnet)', 'Windows 작업 스케줄러', 'Cloudflare Pages'],
+    live: 'https://threads-choi-archive.pages.dev/',
+    thumbnail: 'threads-choi-archive.png',
+    date: '2026-07',
+    featured: true,
+  },
+  {
     title: 'BLOCK /10 — 브라우저 클래식 테트리스',
     summary:
       '설치 없이 브라우저에서 바로 즐기는 10×20 클래식 테트리스. 홀드·하드 드롭·고스트 피스 같은 현대 테트리스 규칙을 갖췄고, 모바일에서는 터치 버튼과 보드 탭·스와이프로 조작할 수 있다. 게임 로직은 vitest 자동 테스트로 검증하며, 최고 점수는 로컬에 저장된다.',
