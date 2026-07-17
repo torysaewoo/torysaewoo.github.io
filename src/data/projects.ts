@@ -20,6 +20,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'YouTube 학습 노트 — 옵시디언 밖에서 읽고 체크하는 모바일 뷰어',
+    summary:
+      '유튜브 플레이리스트에 영상을 넣으면 AI가 옵시디언 학습 노트를 자동 생성하는 파이프라인이 있었지만, 모바일에선 옵시디언을 쓰지 않아 읽을 수 없었다. 노트 48편을 콜아웃·타임스탬프 점프 링크·회상 질문 접기까지 그대로 웹으로 변환해 채널·시리즈별로 정리하고, 학습 진행도(🌑🌗🌕)를 폰에서 탭 한 번으로 바꾸면 Cloudflare KV를 우체통 삼아 PC의 옵시디언 볼트 원본까지 왕복 반영된다. 볼트 수동 수정과 충돌하면 볼트가 이기는 규칙으로 원본을 보호한다.',
+    useFor: '이동 중에 학습 노트를 복습하고 진행도를 체크하고 싶을 때 — 앱 없이 링크 하나로',
+    category: '생활 도구',
+    tech: ['Node.js', 'markdown-it', 'Cloudflare Pages Functions', 'Workers KV', 'PowerShell 동기화'],
+    live: 'https://youtube-notes-14m.pages.dev/',
+    thumbnail: 'youtube-notes.png',
+    date: '2026-07',
+    featured: true,
+  },
+  {
     title: '반도체 3사 기술적 분석 — 매일 예측하는 차트 대시보드',
     summary:
       'SK하이닉스·삼성전자·마이크론 주가를 캔들차트·이동평균·볼린저·RSI·MACD·일목균형표 등 10개 기법으로 읽고, 외국인·기관·개인 수급까지 합산해 단기/중기/장기 방향을 게이지로 예측한다. 과거 250일 소급 검증한 예측 적중률과 기법별 백테스트로 신호의 신뢰도를 스스로 채점하고, 각 기법의 유래·판독법은 클릭 한 번에 팝업으로 열린다. 차트는 라이브러리 없이 캔버스로 직접 렌더링.',
