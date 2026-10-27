@@ -20,6 +20,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'FEM 아카데미 — 손으로 만지며 배우는 유한요소법',
+    summary:
+      '유한요소법(FEM)은 상용툴 버튼만 누르면 결과가 나오지만, 행렬 하나하나가 어디서 왔는지 모르면 결과를 믿을 수 없다. 형상함수 → B 행렬 → 강성행렬 → 경계조건 → 응력의 5단계를 스프링·1D 봉·트러스 순으로 반복하며, 슬라이더로 숫자를 바꾸고 경계조건을 빼서 행렬을 망가뜨려 보고 강성행렬을 손으로 채워 채점받는다. 브라우저 안에서 Pyodide로 Python·NumPy를 실행해 1D 솔버를 직접 완성하고, 마지막엔 다리 트러스를 설계해 처짐·응력 조건을 만족하는 최소 무게에 도전한다. 솔버는 JS로 직접 구현.',
+    useFor: 'FEM을 처음 배우거나 Abaqus 결과가 왜 그렇게 나오는지 원리부터 다시 잡고 싶을 때 — 설치 없이 링크 하나로',
+    category: '시뮬레이션',
+    tech: ['React + MDX', 'KaTeX', 'Pyodide (브라우저 Python)', 'FEM 솔버 직접 구현', 'Cloudflare Pages'],
+    live: 'https://fem-academy.pages.dev/',
+    thumbnail: 'fem-academy.png',
+    date: '2026-10',
+    featured: true,
+  },
+  {
     title: 'YouTube 학습 노트 — 옵시디언 밖에서 읽고 체크하는 모바일 뷰어',
     summary:
       '유튜브 플레이리스트에 영상을 넣으면 AI가 옵시디언 학습 노트를 자동 생성하는 파이프라인이 있었지만, 모바일에선 옵시디언을 쓰지 않아 읽을 수 없었다. 노트 48편을 콜아웃·타임스탬프 점프 링크·회상 질문 접기까지 그대로 웹으로 변환해 채널·시리즈별로 정리하고, 학습 진행도(🌑🌗🌕)를 폰에서 탭 한 번으로 바꾸면 Cloudflare KV를 우체통 삼아 PC의 옵시디언 볼트 원본까지 왕복 반영된다. 볼트 수동 수정과 충돌하면 볼트가 이기는 규칙으로 원본을 보호한다.',
