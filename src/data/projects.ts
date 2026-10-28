@@ -20,6 +20,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: '팀장 Claude Code 실습실 — 관리자를 위한 AI 비서 입문',
+    summary:
+      'ChatGPT는 써봤지만 터미널은 처음인 관리자가 Claude Code를 업무 비서로 쓰게 돕는 실습 웹앱. 하네스·도구·스킬·MCP 같은 용어를 "새로 온 비서" 비유와 그림으로 설명하고 퀴즈로 확인한 뒤, 복사해서 바로 붙여넣는 프롬프트로 34개 실습을 따라간다. Python(win32com)으로 Outlook 메일을 직접 읽어 아침 브리핑과 스레드 요약을 Obsidian 일일노트에 남기고, 회신은 임시보관함 초안까지만 만든다. 상사가 보낸 메일에서 보고 선호 스타일을 학습해 스타일 노트로 만든 뒤, 그 기준으로 보고서 작성 → 상사 관점 빨간펜 리뷰 → 피드백 반영까지 이어지는 학습 루프를 실습하고, 반복 업무는 /morning-brief 같은 나만의 명령어로 묶는다.',
+    useFor: '메일·자료 정리·보고가 주 업무인 팀장님께 Claude Code를 처음 소개하고 직접 손에 익히게 하고 싶을 때',
+    category: '생활 도구',
+    tech: ['Vanilla JS', 'Claude Code', 'Obsidian', 'Outlook COM (win32com)', 'Cloudflare Pages'],
+    live: 'https://claude-code-lab.pages.dev/',
+    thumbnail: 'claude-code-lab.png',
+    date: '2026-10',
+    featured: true,
+  },
+  {
     title: 'MIXLAB — 나의 첫 DJ 여정',
     summary:
       'DDJ-FLX4를 샀지만 조작 원리와 연습 방법이 막막한 입문자를 위한 60일 인터랙티브 DJ 교실. 매일 원리 설명 → 움직이는 시연 → 직접 조작 → 해설 문제 → 실제 장비 연습으로 배운다. 합성 하우스 루프 두 곡을 들으며 TEMPO·조그·EQ·필터·Echo·페이더·루프를 조작하고, CUE 경로와 프레이즈를 시각화해 비교한다. 공식 FLX4 배치도에서 버튼 위치를 찾고, 셋의 순서·길이를 설계하거나 자신의 녹음을 로컬로 열어 타임스탬프 메모를 남길 수 있다. 진도와 노트는 브라우저에 저장하며 백업·복원을 지원한다.',
