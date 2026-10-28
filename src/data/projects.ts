@@ -22,7 +22,7 @@ export const projects: Project[] = [
   {
     title: 'PKG해석 관리자용 Claude Code Master — AI 비서 입문 실습',
     summary:
-      'ChatGPT는 써봤지만 터미널은 처음인 관리자가 Claude Code를 업무 비서로 쓰게 돕는 실습 웹앱. 하네스·도구·스킬·MCP 같은 용어를 "새로 온 비서" 비유와 그림으로 설명하고 퀴즈로 확인한 뒤, 복사해서 바로 붙여넣는 프롬프트로 40개 실습을 따라간다. Python(win32com)으로 Outlook 메일을 직접 읽어 아침 브리핑과 스레드 요약을 Obsidian 일일노트에 남기고, 회신은 임시보관함 초안까지만 만든다. 상사가 보낸 메일에서 보고 선호 스타일을 학습해 스타일 노트로 만든 뒤, 그 기준으로 보고서 작성 → 상사 관점 빨간펜 리뷰 → 피드백 반영까지 이어지는 학습 루프를 실습하고, Playwright를 MCP로 연결해 arXiv에서 반도체 패키징 논문 동향을 조사·요약하고, 반복 업무는 /morning-brief·/paper-watch 같은 나만의 명령어로 묶는다.',
+      'ChatGPT는 써봤지만 터미널은 처음인 관리자가 Claude Code를 업무 비서로 쓰게 돕는 실습 웹앱. 하네스·도구·스킬·MCP 같은 용어를 "새로 온 비서" 비유와 그림으로 설명하고 퀴즈로 확인한 뒤, 복사해서 바로 붙여넣는 프롬프트로 41개 실습을 따라간다. Python(win32com)으로 Outlook 메일을 직접 읽어 아침 브리핑과 스레드 요약을 Obsidian 일일노트에 남기고, 회신은 임시보관함 초안까지만 만든다. 상사가 보낸 메일에서 보고 선호 스타일을 학습해 스타일 노트로 만든 뒤, 그 기준으로 보고서 작성 → 상사 관점 빨간펜 리뷰 → 피드백 반영까지 이어지는 학습 루프를 실습하고, Playwright를 MCP로 연결해 arXiv와 제휴 논문 DB에서 반도체 패키징 논문 원문까지 받아 동향을 조사·요약하고, 반복 업무는 /morning-brief·/paper-watch 같은 나만의 명령어로 묶는다.',
     useFor: '메일·자료 정리·보고가 주 업무인 팀장님께 Claude Code를 처음 소개하고 직접 손에 익히게 하고 싶을 때',
     category: '생활 도구',
     tech: ['Vanilla JS', 'Claude Code', 'Obsidian', 'Outlook COM (win32com)', 'Cloudflare Pages'],
