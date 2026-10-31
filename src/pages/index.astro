@@ -4,20 +4,22 @@ import ProjectCard from '../components/ProjectCard.astro';
 import { projects, type Category } from '../data/projects';
 const sorted = [...projects].sort((a, b) => b.date.localeCompare(a.date));
 const featured = projects.filter((p) => p.featured).sort((a, b) => a.featured! - b.featured!).slice(0, 3);
+const tickerItems = ['TYPESCRIPT', 'JAVASCRIPT', 'PYTHON', 'THREE.JS', 'WEBGL', 'NODE.JS', 'ASTRO', 'VITE', 'SVG CHARTS', 'KAKAO MAPS API', 'REST API', 'CLOUDFLARE PAGES', 'GIT'];
 const categories: Category[] = ['학습·해석', '데이터·분석', '업무·생활', '게임·실험'];
 ---
-<Base title="KSY 도구함 — 직접 만든 도구와 학습 자료">
+<Base title="KSY — Tools from Everyday Questions">
   <a class="skip-link" href="#projects">도구 목록으로 건너뛰기</a>
   <header class="site-header container">
     <a class="brand" href="/" aria-label="KSY 도구함 홈"><span class="brand-mark" aria-hidden="true">K</span> KSY 도구함</a>
     <nav aria-label="주 메뉴"><a href="#projects">도구 목록</a><a href="#about">소개</a></nav>
   </header>
   <main class="container">
-    <div class="intro">
+    <div class="intro hero">
       <p class="eyebrow">작은 질문에서 시작한 도구들</p>
-      <h1>필요한 도구를, 바로.</h1>
-      <p>직접 만든 도구와 학습 자료를 모았습니다. 궁금한 것을 배우고, 필요한 일을 해결해 보세요.</p>
+      <h1>일상의 질문을<br /><span class="grad">도구로.</span></h1>
+      <p class="tagline">데이터로 답하고, 시뮬레이션으로 보여주고, 브라우저로 배포합니다.</p>
     </div>
+    <div class="marquee" aria-hidden="true"><div class="track">{[...tickerItems, ...tickerItems].map((item) => (<><span>{item}</span><span class="dot">✦</span></>))}</div></div>
     <div id="catalog">
       <div class="catalog-controls" hidden>
         <div class="search-box">
@@ -47,7 +49,7 @@ const categories: Category[] = ['학습·해석', '데이터·분석', '업무·
       </section>
       <section id="projects" aria-labelledby="projects-title">
         <div class="section-head"><h2 id="projects-title">전체 도구</h2><p id="result-count" role="status" aria-live="polite" aria-atomic="true">{projects.length}개 도구</p></div>
-        <div id="project-grid" class="grid">{sorted.map((project) => <ProjectCard project={project} />)}</div>
+        <div id="project-grid" class="grid">{sorted.map((project, index) => <ProjectCard project={project} index={index + 1} />)}</div>
         <div id="empty-state" class="empty-state" hidden>
           <h3>일치하는 도구가 없습니다.</h3>
           <p>다른 검색어를 입력하거나 분류를 바꿔 보세요.</p>

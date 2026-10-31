@@ -9,6 +9,8 @@ const analysisCount = projects.filter((project) => project.category === '데이�
 const html = fs.readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
 function setup(run = true) {
   const dom = new JSDOM(html, { url: 'https://torysaewoo.github.io/', runScripts: 'outside-only' });
+  // DOM tests do not render the decorative canvas.
+  dom.window.HTMLCanvasElement.prototype.getContext = () => null;
   const { document } = dom.window;
   if (run) {
     // Execute the actual Astro/Vite build output, not a duplicate test implementation.
