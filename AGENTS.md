@@ -10,6 +10,10 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 
 ## Documentation
 
+Before adding or changing catalogue projects, read `PROJECTS.md` for the current
+data schema, compact card design, thumbnail rules, and non-UI validation workflow.
+Run `npm run build` followed by `npm test` before publishing catalogue changes.
+
 Full documentation: https://docs.astro.build
 
 Consult these guides before working on related tasks:

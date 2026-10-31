@@ -1,94 +1,68 @@
 ---
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { projects } from '../data/projects';
-
+import { projects, type Category } from '../data/projects';
 const sorted = [...projects].sort((a, b) => b.date.localeCompare(a.date));
-const categories = [...new Set(sorted.map((p) => p.category))];
-const tickerItems = [
-  'TYPESCRIPT', 'JAVASCRIPT', 'PYTHON', 'THREE.JS', 'WEBGL',
-  'NODE.JS', 'ASTRO', 'VITE', 'SVG CHARTS', 'KAKAO MAPS API',
-  'REST API', 'CLOUDFLARE PAGES', 'GIT',
-];
+const featured = projects.filter((p) => p.featured).sort((a, b) => a.featured! - b.featured!).slice(0, 3);
+const categories: Category[] = ['학습·해석', '데이터·분석', '업무·생활', '게임·실험'];
 ---
-<Base title="KSY — Tools from Everyday Questions">
-  <div class="container">
-    <header class="hero">
-      <h1>일상의 질문을<br /><span class="grad">도구로.</span></h1>
-      <p class="tagline">
-        데이터로 답하고, 시뮬레이션으로 보여주고, 브라우저로 배포합니다.<span class="cursor"></span>
-      </p>
-      <div class="links">
-        <a class="btn primary" href="#projects">Explore Projects</a>
-      </div>
-      <span class="scroll-hint">SCROLL ↓</span>
-    </header>
-  </div>
-
-  <div class="marquee" aria-hidden="true">
-    <div class="track">
-      {[...tickerItems, ...tickerItems].map((item) => (
-        <><span>{item}</span><span class="dot">✦</span></>
-      ))}
+<Base title="KSY 도구함 — 직접 만든 도구와 학습 자료">
+  <a class="skip-link" href="#projects">도구 목록으로 건너뛰기</a>
+  <header class="site-header container">
+    <a class="brand" href="/" aria-label="KSY 도구함 홈"><span class="brand-mark" aria-hidden="true">K</span> KSY 도구함</a>
+    <nav aria-label="주 메뉴"><a href="#projects">도구 목록</a><a href="#about">소개</a></nav>
+  </header>
+  <main class="container">
+    <div class="intro">
+      <p class="eyebrow">작은 질문에서 시작한 도구들</p>
+      <h1>필요한 도구를, 바로.</h1>
+      <p>직접 만든 도구와 학습 자료를 모았습니다. 궁금한 것을 배우고, 필요한 일을 해결해 보세요.</p>
     </div>
-  </div>
-
-  <div class="container">
-    <section id="projects">
-      <div class="section-head">
-        <span class="num">01</span>
-        <h2>Projects</h2>
-      </div>
-      <div class="filter-bar" role="group" aria-label="프로젝트 카테고리 필터">
-        <button class="filter-btn active" data-filter="all">전체</button>
-        {categories.map((c) => (
-          <button class="filter-btn" data-filter={c}>{c}</button>
-        ))}
-      </div>
-      <div class="grid">
-        {sorted.map((p, i) => <ProjectCard project={p} index={i + 1} />)}
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="section-head">
-        <span class="num">02</span>
-        <h2>About</h2>
-      </div>
-      <div class="about-box">
-        <p>
-          거창한 비전보다, <strong>당장 필요한 것</strong>을 만듭니다.
-          뉴스 보다 궁금해진 데이터, 일상에서 반복되는 불편, 그냥 돌려보고 싶은 시뮬레이션 —
-          아이디어가 생기면 며칠 안에 돌아가는 물건으로 만들고, 누구나 링크 하나로
-          써볼 수 있게 브라우저에 배포합니다. 여기 있는 건 전부 제가 먼저 쓰고 있는 것들입니다.
-        </p>
-        <div class="stack">
-          {['TypeScript', 'Three.js', 'Python', 'Node.js', 'Astro', 'Git'].map((t) => (
-            <span class="badge">{t}</span>
+    <div id="catalog">
+      <div class="catalog-controls" hidden>
+        <div class="search-box">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
+          <label for="tool-search" class="sr-only">도구 검색</label>
+          <input id="tool-search" type="search" placeholder="어떤 도구가 필요하세요?" autocomplete="off" aria-controls="project-grid" />
+          <button id="clear-search" class="text-button" type="button" hidden aria-label="검색어 지우기">지우기</button>
+        </div>
+        <div class="filter-bar" role="group" aria-label="도구 분류">
+          <button type="button" class="filter-btn" data-filter="all" aria-pressed="true" aria-controls="project-grid">전체 <span>{projects.length}</span></button>
+          {categories.map((category) => (
+            <button type="button" class="filter-btn" data-filter={category} aria-pressed="false" aria-controls="project-grid">{category} <span>{projects.filter((p) => p.category === category).length}</span></button>
           ))}
         </div>
       </div>
+      <section id="featured" aria-labelledby="featured-title">
+        <div class="section-head"><h2 id="featured-title">자주 쓰는 도구</h2><span>바로가기</span></div>
+        <div class="quick-grid">
+          {featured.map((project) => (
+            <a class="quick-card" href={project.live ?? project.repo} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} 열기 (새 탭)`}>
+              <img src={`/thumbs/${project.thumbnail}`} alt="" width="80" height="45" />
+              <span><strong>{project.title}</strong><small>{project.category}</small></span>
+              <span class="quick-arrow" aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="section-head"><h2 id="projects-title">전체 도구</h2><p id="result-count" role="status" aria-live="polite" aria-atomic="true">{projects.length}개 도구</p></div>
+        <div id="project-grid" class="grid">{sorted.map((project) => <ProjectCard project={project} />)}</div>
+        <div id="empty-state" class="empty-state" hidden>
+          <h3>일치하는 도구가 없습니다.</h3>
+          <p>다른 검색어를 입력하거나 분류를 바꿔 보세요.</p>
+          <button id="reset-filters" class="btn" type="button">전체 도구 보기</button>
+        </div>
+      </section>
+    </div>
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">이 도구함에 대해</h2>
+      <p>일하다 궁금해진 원리, 반복되는 불편, 해보고 싶은 실험을 작은 웹 도구로 만듭니다.<br />각 도구는 새 탭에서 열립니다. 자세한 기능과 제작 기술은 카드의 ‘자세히’에서 확인하세요.</p>
     </section>
-  </div>
-
-  <footer>
-    © 2026 KSY
-  </footer>
-
+  </main>
+  <footer class="container"><span>© {new Date().getFullYear()} KSY</span><a href="#projects">도구 목록 ↑</a></footer>
   <script>
-    // 카테고리 필터: 버튼 클릭 시 data-category가 일치하는 카드만 표시
-    const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-    const cards = document.querySelectorAll<HTMLElement>('.card[data-category]');
-    buttons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        buttons.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        cards.forEach((card) => {
-          card.style.display =
-            filter === 'all' || card.dataset.category === filter ? '' : 'none';
-        });
-      });
-    });
+    import { initCatalog } from '../scripts/catalog.js';
+    initCatalog(document);
   </script>
 </Base>
