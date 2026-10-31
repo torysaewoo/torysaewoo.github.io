@@ -37,7 +37,7 @@ test('all tools, links and closed details work without JavaScript', () => {
   assert.equal(document.querySelectorAll('details[open]').length, 0);
   assert.equal(document.querySelectorAll('.project-details').length, total);
   for (const card of visible()) {
-    assert.match(card.querySelector('.card-actions a').href, /^https:\/\//);
+    assert.match(card.querySelector('.card-link').href, /^https:\/\//);
     assert.ok(card.querySelector('.detail-content p').textContent.length > 80);
     assert.ok(card.querySelector('.card-summary').textContent.length <= 65);
     assert.ok(card.querySelector('h3').textContent.length <= 24);
@@ -50,7 +50,7 @@ test('all tools, links and closed details work without JavaScript', () => {
     const card = query('[data-project="' + project.id + '"]');
     assert.ok(card, project.id);
     assert.equal(card.querySelector('.detail-content > p').textContent, project.description);
-    assert.equal(card.querySelector('.card-actions a').href, project.live ?? project.repo);
+    assert.equal(card.querySelector('.card-link').href, project.live ?? project.repo);
   }
   const ids = [...document.querySelectorAll('[id]')].map((element) => element.id);
   assert.equal(new Set(ids).size, ids.length);
@@ -62,7 +62,7 @@ test('initial page has three curated shortcuts and all tools', () => {
   assert.equal(visible().length, total);
   assert.deepEqual([...document.querySelectorAll('.quick-card strong')].map((el) => el.textContent), ['FEM 아카데미', 'Shape Index', 'Claude Code 실습']);
   assert.equal(query('#empty-state').hidden, true);
-  assert.equal(query('#result-count').textContent, `${total}개 도구`);
+  assert.equal(query('#result-count').textContent, `${total}개 프로젝트`);
 });
 
 test('search is case-insensitive, trims whitespace and combines words', () => {
@@ -120,5 +120,27 @@ test('all category filters show their announced count and unique selection', () 
     assert.equal(visible().length, Number(button.querySelector('span').textContent));
     assert.equal(document.querySelectorAll('[data-filter][aria-pressed="true"]').length, 1);
     assert.equal(query('#empty-state').hidden, true);
+  }
+});
+
+
+test('cards expose one native project link and independent disclosure', () => {
+  const { document, visible } = setup(false);
+  assert.equal(document.querySelectorAll('.brand, .brand-mark, .site-header, .marquee').length, 0);
+  assert.doesNotMatch(document.body.textContent, /도구|TYPESCRIPT✦/);
+  for (const card of visible()) {
+    const link = card.querySelector('.card-link');
+    const details = card.querySelector('details');
+    assert.equal(card.querySelectorAll('.card-link').length, 1);
+    assert.equal(link.target, '_blank');
+    assert.ok(link.rel.includes('noopener'));
+    assert.equal(link.contains(details), false);
+    assert.equal(details.closest('a'), null);
+    assert.equal(card.querySelectorAll('.btn, button, a a').length, 0);
+    assert.ok(card.querySelector('img').src.endsWith('-cover.svg'));
+    link.focus();
+    assert.equal(document.activeElement, link);
+    details.querySelector('summary').click();
+    assert.equal(details.open, true);
   }
 });

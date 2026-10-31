@@ -7,24 +7,24 @@ const searchText = [project.title, project.summary, project.description, project
 <article class="card" data-project={project.id} data-category={project.category} data-search={searchText} aria-labelledby={`title-${project.id}`}>
   {index && <span class="index">{String(index).padStart(2, '0')}</span>}
   <span class="cat-label">{project.category}</span>
-  <a class="thumb" href={project.live ?? project.repo} target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+  <div class="thumb">
     <img src={`/thumbs/${project.thumbnail}`} alt="" width="640" height="360" loading="lazy" decoding="async" />
-  </a>
+  </div>
   <div class="card-body">
-    <h3 id={`title-${project.id}`}>{project.title}</h3>
+    <h3 id={`title-${project.id}`}><a class="card-link" href={project.live ?? project.repo} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} (새 탭)`}>{project.title}</a></h3>
     <p class="card-summary">{project.summary}</p>
-    <div class="card-actions">
-      <a class="btn primary" href={project.live ?? project.repo} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} 열기 (새 탭)`}>열기 <span aria-hidden="true">↗</span></a>
+    <div class="card-meta">
       <span class="updated">{project.date.replace('-', '.')}</span>
+      <span class="card-arrow" aria-hidden="true">↗</span>
     </div>
     <details class="project-details">
       <summary>자세히<span class="sr-only"> — {project.title}</span></summary>
       <div class="detail-content">
         <p>{project.description}</p>
-        <p class="use-for"><strong>이럴 때 사용하세요</strong>{project.useFor}</p>
+        <p class="use-for"><strong>사용 상황</strong>{project.useFor}</p>
         <h4>제작 기술</h4>
         <ul class="tech-list">{project.tech.map((tech) => <li>{tech}</li>)}</ul>
-        {project.repo && <a href={project.repo} target="_blank" rel="noopener noreferrer">소스 코드 보기 ↗</a>}
+        {project.repo && <a href={project.repo} target="_blank" rel="noopener noreferrer">소스 코드 ↗</a>}
       </div>
     </details>
   </div>

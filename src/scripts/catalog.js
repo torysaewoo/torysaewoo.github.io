@@ -24,8 +24,8 @@ export function initCatalog(root) {
       if (matches) visible++;
     });
     const filtered = tokens.length > 0 || category !== 'all';
-    count.textContent = filtered ? `${cards.length}개 중 ${visible}개` : `${cards.length}개 도구`;
-    title.textContent = filtered ? '검색 결과' : '전체 도구';
+    count.textContent = filtered ? `${cards.length}개 중 ${visible}개` : `${cards.length}개 프로젝트`;
+    title.textContent = filtered ? '검색 결과' : '전체 프로젝트';
     empty.hidden = visible !== 0;
     featured.hidden = filtered;
     clear.hidden = search.value.length === 0;
