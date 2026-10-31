@@ -14,11 +14,25 @@ export interface Project {
   repo?: string;
   /** public/thumbs/ 안의 파일명 */
   thumbnail: string;
+  thumbnailAlt?: string;
   date: string; // YYYY-MM
   featured?: boolean;
 }
 
 export const projects: Project[] = [
+  {
+    title: 'Shape Index — 두 방향의 휨으로 배우는 형상 분류',
+    summary:
+      'Smile·Crying·원통·Saddle은 무엇으로 구분할까? 두 방향의 곡률을 슬라이더로 바꾸며 3D 형상과 단면, Shape Index가 함께 변하는 과정을 살펴본다. 휨의 세기와 형상의 차이, Hessian과 주곡률의 관계, 완전 평면에서 지수가 정의되지 않는 이유를 쉬운 설명과 수식으로 확인한다.',
+    useFor: '워페이지 형상 분류의 원리와 Shape Index 계산을 그림으로 이해하고 싶을 때',
+    category: '시뮬레이션',
+    tech: ['HTML', 'JavaScript', 'SVG', 'Shape Index', 'Cloudflare Pages'],
+    live: 'https://shape-index-explained.pages.dev/',
+    thumbnail: 'shape-index-explained.png',
+    thumbnailAlt: '두 주곡률로 만든 Smile, 원통, Saddle, Crying 형상 예시',
+    date: '2026-10',
+    featured: true,
+  },
   {
     title: 'PKG해석 관리자용 Claude Code Master — AI 비서 입문 실습',
     summary:

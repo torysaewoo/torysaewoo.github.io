@@ -7,7 +7,7 @@ const { project, index } = Astro.props;
   {index && <span class="index">{String(index).padStart(2, '0')}</span>}
   <span class="cat-label">{project.category}</span>
   <a class="thumb" href={project.live ?? project.repo} target="_blank" rel="noopener">
-    <img src={`/thumbs/${project.thumbnail}`} alt={`${project.title} 스크린샷`} loading="lazy" />
+    <img src={`/thumbs/${project.thumbnail}`} alt={project.thumbnailAlt ?? `${project.title} 스크린샷`} loading="lazy" />
   </a>
   <div class="body">
     <h3>{project.title}</h3>
