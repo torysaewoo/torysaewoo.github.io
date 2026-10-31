@@ -24,6 +24,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'youtube-quiz',
+    title: 'Recall',
+    summary: '재생목록에 담은 영상을 30문제로 만들어 나눠 풀고 복습하는 퀴즈.',
+    description:
+      'YouTube의 Quiz 재생목록에 영상을 담으면 30분마다 확인해 자막을 읽고 4지선다 30문제를 만든다. 문제는 섞어서 10문제씩 3회차로 나누고, 다음 회차는 앞 회차를 끝낸 다음 날 열린다. 푼 문제는 1, 3, 7, 16, 35일 간격으로 복습에 다시 나오고, 틀린 문제는 오답노트에 모아 따로 연습한다. 풀이 기록은 동기화 코드로 여러 기기에서 이어 쓸 수 있다.',
+    useFor: '본 영상의 내용을 흘려보내지 않고 며칠에 걸쳐 문제로 풀며 소화하고 싶을 때',
+    category: '학습·해석',
+    tech: ['Vanilla JS', 'yt-dlp', 'Claude Code', '간격 반복', 'Cloudflare Pages', 'Cloudflare KV'],
+    live: 'https://youtube-quiz.pages.dev/',
+    thumbnail: 'youtube-quiz-cover.svg',
+    thumbnailAlt: 'OMR 답안지의 칠해진 표시를 표현한 도형',
+    date: '2026-10',
+  },
+  {
     id: 'shape-index-explained',
     title: 'Shape Index',
     summary: '두 주곡률로 살펴보는 Smile·원통·Saddle의 차이.',
