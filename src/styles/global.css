@@ -494,3 +494,7 @@ body { isolation: isolate; }
 .card:hover { transform: translateY(-3px); }
 #about { background: transparent; backdrop-filter: none; border: 0; border-top: 1px solid var(--border); border-radius: 0; padding: 24px 0; }
 @media (prefers-reduced-motion: reduce) { .card:hover { transform: none; } }
+
+/* Start with project search instead of a hero section. */
+main.container { padding-top: 40px; }
+@media (max-width: 600px) { main.container { padding-top: 24px; } }
