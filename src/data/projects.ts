@@ -24,6 +24,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'morocco-egypt-trip',
+    title: '모로코 이집트 여행',
+    summary: '열면 오늘 일정이 바로 나오는 모로코와 이집트 여행 안내 앱.',
+    description:
+      '여행 정보를 미리 찾아보지 못한 채 떠나는 일정에 맞춰, 날짜별로 할 일을 시간순으로 채워 넣은 모바일 여행 안내 앱. 앱을 열면 오늘 날짜의 일정과 이동편, 숙소 위치, 주의사항이 먼저 나오고 장소마다 지도 바로가기가 붙는다. 항공권과 투어, 숙소, 준비물 체크리스트는 기기에 저장되고, 환율 계산과 기본 회화, 적정 시세, 흥정과 사기 대처법, 긴급 연락처를 함께 담았다. 한 번 열어 두면 인터넷이 끊긴 곳에서도 볼 수 있다.',
+    useFor: '낯선 나라에서 오늘 무엇을 하고 어떻게 이동할지 폰으로 바로 확인하고 싶을 때',
+    category: '업무·생활',
+    tech: ['HTML', 'Vanilla JS', 'Service Worker', 'Cloudflare Pages'],
+    live: 'https://morocco-egypt-trip.pages.dev/',
+    thumbnail: 'morocco-egypt-trip-cover.svg',
+    thumbnailAlt: '피라미드와 사막 지평선, 해를 표현한 도형',
+    date: '2026-11',
+  },
+  {
     id: 'youtube-quiz',
     title: 'Recall',
     summary: '재생목록에 담은 영상을 30문제로 만들어 나눠 풀고 복습하는 퀴즈.',

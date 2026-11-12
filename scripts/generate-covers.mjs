@@ -30,6 +30,8 @@ covers['html-effectiveness-kr'] = '<rect x="128" y="84" width="384" height="192"
 covers['richrichrich'] = '<path d="M140 270h360M170 270V155h85v115m28 0V95h85v175m28 0V175h70v95"/><path d="M192 180h40m-40 28h40m-40 28h40m75-115h37m-37 30h37m-37 30h37m-37 30h37m-37 30h37m73-37h27m-27 30h27" stroke="#354a5d"/>';
 covers['earth-sim'] = '<circle cx="320" cy="180" r="112"/><ellipse cx="320" cy="180" rx="55" ry="112" stroke="#354a5d"/><ellipse cx="320" cy="180" rx="112" ry="48" stroke="#354a5d"/><path d="M208 180h224M320 68v224" stroke="#354a5d"/><path d="m243 114 36 13 7 32 32 12-8 31-22 6-8 44-21-28-6-35-24-16zm112-17 36 20 9 30-21 22-26-14-16-32z" fill="#1d2935" stroke-width="2"/>';
 
+covers['morocco-egypt-trip'] = '<circle cx="455" cy="112" r="26"/><path d="M110 268 230 112l120 156zM300 268l85-108 85 108" fill="#1d2935"/><path d="M230 112v156M385 160v108" stroke="#354a5d"/><path d="M90 268h460" /><path d="M110 300q60-18 120 0t120 0 120 0 80-6" stroke="#354a5d"/><path d="M150 84h14m12 0h14m12 0h14" stroke="#354a5d" stroke-dasharray="2 10"/>';
+
 await mkdir('public/thumbs', { recursive: true });
 for (const [id, drawing] of Object.entries(covers)) {
   await writeFile(`public/thumbs/${id}-cover.svg`, frame(drawing));
