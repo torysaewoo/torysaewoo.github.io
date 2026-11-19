@@ -32,6 +32,8 @@ covers['earth-sim'] = '<circle cx="320" cy="180" r="112"/><ellipse cx="320" cy="
 
 covers['morocco-egypt-trip'] = '<circle cx="455" cy="112" r="26"/><path d="M110 268 230 112l120 156zM300 268l85-108 85 108" fill="#1d2935"/><path d="M230 112v156M385 160v108" stroke="#354a5d"/><path d="M90 268h460" /><path d="M110 300q60-18 120 0t120 0 120 0 80-6" stroke="#354a5d"/><path d="M150 84h14m12 0h14m12 0h14" stroke="#354a5d" stroke-dasharray="2 10"/>';
 
+covers['g2-docs-ko'] = '<rect x="118" y="120" width="170" height="112" rx="34"/><rect x="352" y="120" width="170" height="112" rx="34"/><path d="M288 164q32-22 64 0M118 150 78 132m444 18 40-18"/><path d="M150 158h74m-74 24h106m-106 24h58m176-48h74m-74 24h106m-106 24h58" stroke="#354a5d"/>';
+
 await mkdir('public/thumbs', { recursive: true });
 for (const [id, drawing] of Object.entries(covers)) {
   await writeFile(`public/thumbs/${id}-cover.svg`, frame(drawing));

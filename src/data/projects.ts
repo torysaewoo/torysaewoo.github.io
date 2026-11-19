@@ -24,6 +24,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'g2-docs-ko',
+    title: 'Even G2 개발자 문서',
+    summary: 'Even G2 스마트 안경 개발자 문서 48쪽을 한국어로 읽고 문제로 익히는 학습판.',
+    description:
+      'Even Realities의 스마트 안경 Even G2용 앱을 만들 때 보는 Even Hub 공식 개발자 문서 48쪽 전체를 한국어로 옮긴 비공식 학습판. 시작하기, 화면과 기기 API, 시뮬레이터와 테스트, 패키징과 제출, CLI, 엔터프라이즈 SDK, 용어집과 FAQ까지 원문의 표와 코드, 링크를 그대로 담았다. 쪽마다 핵심 요약과 확인 문제를 붙였고, 읽은 쪽을 표시하면 진도표에 반영된다. 한국어와 영어 용어 모두 검색할 수 있고 영상 시리즈 14편도 그 자리에서 재생된다.',
+    useFor: 'Even G2 앱 개발을 시작하면서 공식 문서를 한국어로 처음부터 끝까지 익히고 싶을 때',
+    category: '학습·해석',
+    tech: ['VitePress', 'Markdown', 'Claude Code', 'Cloudflare Pages'],
+    live: 'https://g2-docs-ko.pages.dev/',
+    thumbnail: 'g2-docs-ko-cover.svg',
+    thumbnailAlt: '두 렌즈 안에 글줄이 떠 있는 안경을 표현한 도형',
+    date: '2026-11',
+  },
+  {
     id: 'morocco-egypt-trip',
     title: '모로코 이집트 여행',
     summary: '열면 오늘 일정이 바로 나오는 모로코와 이집트 여행 안내 앱.',
